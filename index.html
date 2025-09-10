@@ -72,6 +72,570 @@
             max-width: 1200px;
             margin: 0 auto;
             padding: 40px 20px;
+            width: 100%;
+            box-sizing: border-box;
+            overflow-x: hidden;
+        }
+
+        /* Prevenir overflow horizontal en todos los dispositivos */
+        body {
+            overflow-x: hidden;
+            width: 100%;
+            margin: 0;
+            padding: 0;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        /* Solución exhaustiva para móviles - Prevenir overflow en TODOS los elementos */
+        @media screen and (max-width: 768px) {
+            /* Reset general para móviles */
+            * {
+                max-width: 100% !important;
+                word-wrap: break-word !important;
+                overflow-wrap: break-word !important;
+            }
+            
+            /* Modales responsive */
+            .modal {
+                padding: 10px !important;
+            }
+            
+            .modal-content {
+                width: 95% !important;
+                max-width: 95% !important;
+                margin: 2% auto !important;
+                padding: 15px !important;
+                border-radius: 8px !important;
+            }
+            
+            .modal-header {
+                flex-direction: column !important;
+                align-items: flex-start !important;
+                gap: 10px !important;
+            }
+            
+            .modal-title {
+                font-size: 18px !important;
+                line-height: 1.3 !important;
+            }
+            
+            .close {
+                font-size: 24px !important;
+                align-self: flex-end !important;
+            }
+            
+            /* Botones responsive */
+            .modal-buttons {
+                flex-direction: column !important;
+                gap: 8px !important;
+                margin-top: 15px !important;
+            }
+            
+            .btn {
+                width: 100% !important;
+                max-width: 100% !important;
+                padding: 12px 16px !important;
+                font-size: 14px !important;
+                border-radius: 6px !important;
+                margin: 0 !important;
+            }
+            
+            /* Inputs responsive */
+            .config-group {
+                margin-bottom: 15px !important;
+            }
+            
+            .config-group label {
+                font-size: 14px !important;
+                margin-bottom: 5px !important;
+            }
+            
+            .config-group input {
+                width: 100% !important;
+                max-width: 100% !important;
+                padding: 10px 12px !important;
+                font-size: 14px !important;
+                border-radius: 6px !important;
+            }
+            
+            /* Tabs responsive */
+            .tabs {
+                flex-direction: column !important;
+                gap: 5px !important;
+            }
+            
+            .tab-button {
+                width: 100% !important;
+                max-width: 100% !important;
+                padding: 12px 16px !important;
+                font-size: 14px !important;
+                text-align: center !important;
+                border-radius: 6px !important;
+            }
+            
+            /* Contenedores responsive */
+            .problem-section {
+                padding: 15px !important;
+                margin: 0 !important;
+            }
+            
+            .problem-container {
+                grid-template-columns: 1fr !important;
+                gap: 15px !important;
+                width: 100% !important;
+                max-width: 100% !important;
+            }
+            
+            .input-panel, .results-panel {
+                width: 100% !important;
+                max-width: 100% !important;
+                padding: 15px !important;
+                margin: 0 !important;
+            }
+            
+            /* Botones de acción responsive */
+            .calculate-btn, .matlab-btn {
+                width: 100% !important;
+                max-width: 100% !important;
+                padding: 12px 16px !important;
+                font-size: 14px !important;
+                margin-bottom: 8px !important;
+            }
+            
+            /* Input groups responsive */
+            .input-group {
+                width: 100% !important;
+                max-width: 100% !important;
+                margin-bottom: 12px !important;
+            }
+            
+            .input-group input {
+                width: 100% !important;
+                max-width: 100% !important;
+                padding: 10px 12px !important;
+                font-size: 14px !important;
+            }
+            
+            .input-group label {
+                font-size: 13px !important;
+                margin-bottom: 4px !important;
+            }
+            
+            /* Análisis avanzado responsive */
+            .analysis-buttons {
+                display: flex !important;
+                flex-direction: column !important;
+                gap: 8px !important;
+                width: 100% !important;
+            }
+            
+            .analysis-button {
+                width: 100% !important;
+                max-width: 100% !important;
+                padding: 10px 12px !important;
+                font-size: 13px !important;
+                border-radius: 6px !important;
+            }
+            
+            /* Resultados responsive */
+            .results-section {
+                padding: 15px !important;
+                width: 100% !important;
+                max-width: 100% !important;
+            }
+            
+            .results-tabs {
+                flex-direction: column !important;
+                gap: 5px !important;
+            }
+            
+            .results-tab {
+                width: 100% !important;
+                max-width: 100% !important;
+                padding: 10px 12px !important;
+                font-size: 13px !important;
+                text-align: center !important;
+            }
+            
+            /* Gráficos responsive */
+            .graph-container {
+                width: 100% !important;
+                max-width: 100% !important;
+                height: 250px !important;
+                margin: 10px 0 !important;
+            }
+            
+            .graph-container canvas {
+                width: 100% !important;
+                max-width: 100% !important;
+                height: 100% !important;
+            }
+            
+            /* Footer responsive */
+            .footer {
+                padding: 20px 15px !important;
+            }
+            
+            .footer-content {
+                grid-template-columns: 1fr !important;
+                gap: 20px !important;
+            }
+            
+            .footer-section {
+                width: 100% !important;
+                max-width: 100% !important;
+            }
+            
+            .developers-table {
+                width: 100% !important;
+                max-width: 100% !important;
+                table-layout: fixed !important;
+            }
+            
+            .developers-table td {
+                word-break: break-word !important;
+                padding: 8px 4px !important;
+                font-size: 12px !important;
+            }
+        }
+
+        /* Media queries específicos para móviles - Solución exhaustiva */
+        
+        /* Móviles grandes (iPhone 14 Pro Max, iPhone 12 Pro Max) */
+        @media screen and (max-width: 430px) {
+            .container {
+                padding: 0 12px !important;
+                max-width: 100vw !important;
+            }
+            
+            .modal-content {
+                width: 98% !important;
+                max-width: 98% !important;
+                margin: 1% auto !important;
+                padding: 12px !important;
+            }
+            
+            .modal-title {
+                font-size: 16px !important;
+            }
+            
+            .btn {
+                padding: 10px 14px !important;
+                font-size: 13px !important;
+            }
+            
+            .problem-container {
+                gap: 12px !important;
+            }
+            
+            .input-panel, .results-panel {
+                padding: 12px !important;
+            }
+            
+            .calculate-btn, .matlab-btn {
+                padding: 10px 14px !important;
+                font-size: 13px !important;
+            }
+            
+            .input-group input {
+                padding: 8px 10px !important;
+                font-size: 13px !important;
+            }
+            
+            .input-group label {
+                font-size: 12px !important;
+            }
+        }
+
+        /* Móviles estándar (iPhone 14, iPhone 12) */
+        @media screen and (max-width: 390px) {
+            .container {
+                padding: 0 10px !important;
+            }
+            
+            .modal-content {
+                width: 99% !important;
+                max-width: 99% !important;
+                margin: 0.5% auto !important;
+                padding: 10px !important;
+            }
+            
+            .modal-title {
+                font-size: 15px !important;
+            }
+            
+            .btn {
+                padding: 8px 12px !important;
+                font-size: 12px !important;
+            }
+            
+            .problem-container {
+                gap: 10px !important;
+            }
+            
+            .input-panel, .results-panel {
+                padding: 10px !important;
+            }
+            
+            .calculate-btn, .matlab-btn {
+                padding: 8px 12px !important;
+                font-size: 12px !important;
+            }
+            
+            .input-group input {
+                padding: 6px 8px !important;
+                font-size: 12px !important;
+            }
+            
+            .input-group label {
+                font-size: 11px !important;
+            }
+            
+            .tab-button {
+                padding: 8px 12px !important;
+                font-size: 12px !important;
+            }
+            
+            .analysis-button {
+                padding: 8px 10px !important;
+                font-size: 11px !important;
+            }
+        }
+
+        /* Móviles pequeños (iPhone 12 mini, Galaxy S21) */
+        @media screen and (max-width: 360px) {
+            .container {
+                padding: 0 8px !important;
+            }
+            
+            .modal-content {
+                width: 100% !important;
+                max-width: 100% !important;
+                margin: 0 !important;
+                padding: 8px !important;
+                border-radius: 0 !important;
+            }
+            
+            .modal-title {
+                font-size: 14px !important;
+            }
+            
+            .btn {
+                padding: 6px 10px !important;
+                font-size: 11px !important;
+            }
+            
+            .problem-container {
+                gap: 8px !important;
+            }
+            
+            .input-panel, .results-panel {
+                padding: 8px !important;
+            }
+            
+            .calculate-btn, .matlab-btn {
+                padding: 6px 10px !important;
+                font-size: 11px !important;
+            }
+            
+            .input-group input {
+                padding: 5px 6px !important;
+                font-size: 11px !important;
+            }
+            
+            .input-group label {
+                font-size: 10px !important;
+            }
+            
+            .tab-button {
+                padding: 6px 10px !important;
+                font-size: 11px !important;
+            }
+            
+            .analysis-button {
+                padding: 6px 8px !important;
+                font-size: 10px !important;
+            }
+            
+            .graph-container {
+                height: 200px !important;
+            }
+        }
+
+        /* Móviles muy pequeños (iPhone SE, Galaxy S10e) */
+        @media screen and (max-width: 320px) {
+            .container {
+                padding: 0 6px !important;
+            }
+            
+            .modal-content {
+                width: 100% !important;
+                max-width: 100% !important;
+                margin: 0 !important;
+                padding: 6px !important;
+                border-radius: 0 !important;
+            }
+            
+            .modal-title {
+                font-size: 13px !important;
+            }
+            
+            .btn {
+                padding: 5px 8px !important;
+                font-size: 10px !important;
+            }
+            
+            .problem-container {
+                gap: 6px !important;
+            }
+            
+            .input-panel, .results-panel {
+                padding: 6px !important;
+            }
+            
+            .calculate-btn, .matlab-btn {
+                padding: 5px 8px !important;
+                font-size: 10px !important;
+            }
+            
+            .input-group input {
+                padding: 4px 5px !important;
+                font-size: 10px !important;
+            }
+            
+            .input-group label {
+                font-size: 9px !important;
+            }
+            
+            .tab-button {
+                padding: 5px 8px !important;
+                font-size: 10px !important;
+            }
+            
+            .analysis-button {
+                padding: 5px 6px !important;
+                font-size: 9px !important;
+            }
+            
+            .graph-container {
+                height: 180px !important;
+            }
+            
+            .footer {
+                padding: 15px 6px !important;
+            }
+            
+            .developers-table td {
+                font-size: 10px !important;
+                padding: 4px 2px !important;
+            }
+        }
+
+        /* Solución específica para SweetAlert2 y alertas en móviles */
+        @media screen and (max-width: 768px) {
+            .swal2-popup {
+                width: 95% !important;
+                max-width: 95% !important;
+                margin: 0 auto !important;
+                padding: 15px !important;
+            }
+            
+            .swal2-title {
+                font-size: 18px !important;
+                line-height: 1.3 !important;
+                word-wrap: break-word !important;
+            }
+            
+            .swal2-content {
+                font-size: 14px !important;
+                line-height: 1.4 !important;
+                word-wrap: break-word !important;
+            }
+            
+            .swal2-actions {
+                flex-direction: column !important;
+                gap: 8px !important;
+            }
+            
+            .swal2-confirm, .swal2-cancel {
+                width: 100% !important;
+                max-width: 100% !important;
+                padding: 12px 16px !important;
+                font-size: 14px !important;
+                margin: 0 !important;
+            }
+            
+            .swal2-input {
+                width: 100% !important;
+                max-width: 100% !important;
+                padding: 10px 12px !important;
+                font-size: 14px !important;
+                margin: 10px 0 !important;
+            }
+            
+            .swal2-textarea {
+                width: 100% !important;
+                max-width: 100% !important;
+                padding: 10px 12px !important;
+                font-size: 14px !important;
+                margin: 10px 0 !important;
+            }
+        }
+
+        /* Solución específica para tooltips en móviles */
+        @media screen and (max-width: 768px) {
+            .tooltip {
+                max-width: 90% !important;
+                word-wrap: break-word !important;
+                font-size: 12px !important;
+                padding: 8px 10px !important;
+            }
+        }
+
+        /* Solución específica para gráficos en móviles */
+        @media screen and (max-width: 768px) {
+            .graph-container {
+                overflow: hidden !important;
+                position: relative !important;
+            }
+            
+            .graph-container canvas {
+                max-width: 100% !important;
+                height: auto !important;
+            }
+        }
+
+        /* Solución específica para tablas en móviles */
+        @media screen and (max-width: 768px) {
+            table {
+                width: 100% !important;
+                max-width: 100% !important;
+                table-layout: fixed !important;
+                word-wrap: break-word !important;
+            }
+            
+            td, th {
+                word-wrap: break-word !important;
+                overflow-wrap: break-word !important;
+                hyphens: auto !important;
+            }
+        }
+
+        /* Solución específica para texto largo en móviles */
+        @media screen and (max-width: 768px) {
+            h1, h2, h3, h4, h5, h6 {
+                word-wrap: break-word !important;
+                overflow-wrap: break-word !important;
+                hyphens: auto !important;
+            }
+            
+            p, span, div {
+                word-wrap: break-word !important;
+                overflow-wrap: break-word !important;
+            }
         }
 
         .matlab-config {
@@ -568,6 +1132,7 @@
             margin-bottom: 40px;
             gap: 0;
             border-bottom: 1px solid #e5e5e5;
+            flex-wrap: wrap;
         }
 
         .tab-button {
@@ -581,15 +1146,27 @@
             font-size: 15px;
             font-weight: 500;
             font-family: inherit;
+            white-space: nowrap;
+            min-width: 120px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
         }
 
         .tab-button.active {
             color: #000;
             border-bottom-color: #000;
+            background: rgba(255, 107, 53, 0.1);
         }
 
         .tab-button:hover {
             color: #000;
+            background: rgba(255, 107, 53, 0.05);
+        }
+
+        .tab-button i {
+            font-size: 16px;
         }
 
         .tab-content {
@@ -604,6 +1181,7 @@
             display: grid;
             grid-template-columns: 1fr 1.5fr;
             gap: 40px;
+            min-height: 500px;
         }
 
         .input-panel {
@@ -612,6 +1190,8 @@
             border: 1px solid #e5e5e5;
             border-radius: 8px;
             height: fit-content;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
         }
 
         .results-panel {
@@ -619,6 +1199,9 @@
             padding: 32px;
             border: 1px solid #e5e5e5;
             border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            min-height: 400px;
         }
 
         .problem-description {
@@ -633,6 +1216,7 @@
 
         .input-group {
             margin-bottom: 24px;
+            position: relative;
         }
 
         .input-group label {
@@ -641,58 +1225,91 @@
             font-weight: 500;
             color: #333;
             font-size: 14px;
+            transition: color 0.2s ease;
         }
 
         .input-group input {
             width: 100%;
-            padding: 12px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
+            padding: 12px 16px;
+            border: 2px solid #e5e5e5;
+            border-radius: 8px;
             font-size: 16px;
             font-family: 'SF Mono', Monaco, 'Cascadia Code', 'Roboto Mono', Consolas, 'Courier New', monospace;
-            transition: border-color 0.2s ease;
+            transition: all 0.3s ease;
+            background: #fafafa;
         }
 
         .input-group input:focus {
-            border-color: #000;
+            border-color: #ff6b35;
             outline: none;
+            background: #ffffff;
+            box-shadow: 0 0 0 3px rgba(255, 107, 53, 0.1);
+        }
+
+        .input-group input:hover {
+            border-color: #ccc;
+            background: #ffffff;
         }
 
         .calculate-btn {
             width: 100%;
-            padding: 16px;
-            background: #000;
+            padding: 16px 24px;
+            background: linear-gradient(135deg, #000, #333);
             color: white;
             border: none;
-            border-radius: 4px;
+            border-radius: 8px;
             font-size: 15px;
             font-weight: 500;
             cursor: pointer;
-            transition: all 0.2s ease;
+            transition: all 0.3s ease;
             font-family: inherit;
             margin-bottom: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
         }
 
         .calculate-btn:hover {
-            background: #333;
+            background: linear-gradient(135deg, #333, #555);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3);
+        }
+
+        .calculate-btn:active {
+            transform: translateY(0);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
         }
 
         .matlab-btn {
             width: 100%;
-            padding: 16px;
-            background: #ff6b35;
+            padding: 16px 24px;
+            background: linear-gradient(135deg, #ff6b35, #e55a2b);
             color: white;
             border: none;
-            border-radius: 4px;
+            border-radius: 8px;
             font-size: 15px;
             font-weight: 500;
             cursor: pointer;
-            transition: all 0.2s ease;
+            transition: all 0.3s ease;
             font-family: inherit;
+            box-shadow: 0 4px 12px rgba(255, 107, 53, 0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
         }
 
         .matlab-btn:hover {
-            background: #e55a2b;
+            background: linear-gradient(135deg, #e55a2b, #d44a1a);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(255, 107, 53, 0.4);
+        }
+
+        .matlab-btn:active {
+            transform: translateY(0);
+            box-shadow: 0 2px 8px rgba(255, 107, 53, 0.3);
         }
 
         .matlab-btn:disabled {
@@ -896,6 +1513,7 @@
             margin-top: 60px;
             position: relative;
             overflow: hidden;
+            min-height: 200px;
         }
 
         .footer::before {
@@ -916,6 +1534,7 @@
             grid-template-columns: 1fr 1fr 1fr;
             gap: 40px;
             align-items: start;
+            min-height: 150px;
         }
 
         .footer-section h3 {
@@ -946,6 +1565,7 @@
             width: 100%;
             border-collapse: collapse;
             margin-top: 10px;
+            table-layout: fixed;
         }
 
         .developers-table th,
@@ -1078,12 +1698,375 @@
             }
         }
 
+
         .analysis-section {
             background: #f5f5f5;
             padding: 24px;
             border-radius: 6px;
             margin: 24px 0;
             border-left: 3px solid #666;
+        }
+
+        /* Mejoras responsive para gráficas Chart.js */
+        .graph-container {
+            position: relative;
+            width: 100%;
+            height: 400px;
+            margin: 20px 0;
+            min-height: 200px;
+        }
+
+        @media screen and (max-width: 768px) {
+            .graph-container {
+                height: 350px;
+                margin: 15px 0;
+            }
+        }
+
+        @media screen and (max-width: 480px) {
+            .graph-container {
+                height: 300px;
+                margin: 10px 0;
+            }
+        }
+
+        @media screen and (max-width: 360px) {
+            .graph-container {
+                height: 250px;
+                margin: 8px 0;
+            }
+        }
+
+        /* Media queries mejorados y robustos */
+        @media screen and (max-width: 1200px) {
+            .container {
+                padding: 0 20px;
+            }
+            
+            .footer-content {
+                grid-template-columns: 1fr 1fr;
+                gap: 30px;
+            }
+            
+            .footer-section:last-child {
+                grid-column: 1 / -1;
+                margin-top: 20px;
+            }
+        }
+
+        @media screen and (max-width: 768px) {
+            .container {
+                padding: 0 15px;
+            }
+            
+            .problem-section {
+                padding: 20px 15px;
+            }
+            
+            .input-group {
+                margin-bottom: 15px;
+            }
+            
+            .input-group label {
+                font-size: 14px;
+            }
+            
+            .input-group input {
+                font-size: 14px;
+                padding: 8px 12px;
+            }
+            
+            .results-section {
+                padding: 15px;
+            }
+            
+            .results-tabs {
+                flex-direction: column;
+                gap: 10px;
+            }
+            
+            .results-tab {
+                padding: 10px 15px;
+                font-size: 14px;
+            }
+            
+            .footer-content {
+                grid-template-columns: 1fr;
+                gap: 25px;
+                text-align: center;
+            }
+            
+            .developers-table {
+                font-size: 12px;
+                margin: 0 auto;
+                max-width: 100%;
+            }
+            
+            .developers-table th,
+            .developers-table td {
+                padding: 8px 4px;
+                word-break: break-word;
+            }
+            
+            .footer-section h3 {
+                justify-content: center;
+            }
+            
+            .institution-logo {
+                max-width: 150px;
+                margin: 0 auto 15px;
+            }
+        }
+
+        @media screen and (max-width: 600px) {
+            .footer-content {
+                padding: 0 15px;
+                gap: 20px;
+            }
+            
+            .developers-table {
+                font-size: 11px;
+                display: block;
+                overflow-x: auto;
+                white-space: nowrap;
+            }
+            
+            .developers-table thead,
+            .developers-table tbody,
+            .developers-table tr {
+                display: table;
+                width: 100%;
+                table-layout: fixed;
+            }
+        }
+
+        @media screen and (max-width: 480px) {
+            .container {
+                padding: 0 10px;
+            }
+            
+            .problem-section {
+                padding: 15px 10px;
+            }
+            
+            .input-group {
+                margin-bottom: 12px;
+            }
+            
+            .input-group label {
+                font-size: 13px;
+            }
+            
+            .input-group input {
+                font-size: 13px;
+                padding: 6px 10px;
+            }
+            
+            .results-section {
+                padding: 12px;
+            }
+            
+            .results-tab {
+                padding: 8px 12px;
+                font-size: 13px;
+            }
+            
+            .analysis-button {
+                padding: 10px 15px;
+                font-size: 13px;
+            }
+            
+            .footer {
+                padding: 25px 0 15px;
+            }
+
+            .footer-content {
+                padding: 0 10px;
+                gap: 20px;
+            }
+
+            .developers-table {
+                font-size: 10px;
+            }
+
+            .developers-table th,
+            .developers-table td {
+                padding: 6px 2px;
+            }
+            
+            .footer-section h3 {
+                font-size: 16px;
+            }
+            
+            .institution-logo {
+                max-width: 120px;
+            }
+        }
+
+        /* Media queries específicos para iPhone 12 y dispositivos similares */
+        @media screen and (max-width: 428px) and (min-width: 390px) {
+            .footer {
+                padding: 20px 0 15px;
+            }
+            
+            .footer-content {
+                padding: 0 8px;
+                gap: 15px;
+            }
+            
+            .footer-section h3 {
+                font-size: 14px;
+                margin-bottom: 15px;
+            }
+            
+            .developers-table {
+                font-size: 10px;
+                width: 100%;
+            }
+            
+            .developers-table th,
+            .developers-table td {
+                padding: 6px 2px;
+                word-break: break-word;
+            }
+            
+            .institution-logo {
+                max-width: 100px;
+                margin: 0 auto 10px;
+            }
+            
+            .footer-section p {
+                font-size: 12px;
+                margin-bottom: 8px;
+            }
+            
+            .footer-section strong {
+                font-size: 12px;
+            }
+        }
+
+        @media screen and (max-width: 390px) and (min-width: 360px) {
+            .footer {
+                padding: 15px 0 10px;
+            }
+            
+            .footer-content {
+                padding: 0 5px;
+                gap: 12px;
+            }
+            
+            .developers-table {
+                font-size: 9px;
+            }
+            
+            .developers-table th,
+            .developers-table td {
+                padding: 4px 1px;
+            }
+            
+            .institution-logo {
+                max-width: 80px;
+            }
+            
+            .footer-section h3 {
+                font-size: 13px;
+                margin-bottom: 12px;
+            }
+            
+            .footer-section p {
+                font-size: 11px;
+                margin-bottom: 6px;
+            }
+        }
+
+        @media screen and (max-width: 360px) and (min-width: 320px) {
+            .container {
+                padding: 0 8px;
+            }
+            
+            .problem-section {
+                padding: 12px 8px;
+            }
+            
+            .input-group label {
+                font-size: 12px;
+            }
+            
+            .input-group input {
+                font-size: 12px;
+                padding: 5px 8px;
+            }
+            
+            .results-section {
+                padding: 10px;
+            }
+            
+            .results-tab {
+                padding: 6px 10px;
+                font-size: 12px;
+            }
+            
+            .analysis-button {
+                padding: 8px 12px;
+                font-size: 12px;
+            }
+            
+            .developers-table {
+                font-size: 8px;
+            }
+            
+            .developers-table th,
+            .developers-table td {
+                padding: 3px 1px;
+            }
+            
+            .footer {
+                padding: 12px 0 8px;
+            }
+            
+            .footer-content {
+                padding: 0 4px;
+                gap: 10px;
+            }
+            
+            .institution-logo {
+                max-width: 70px;
+            }
+        }
+
+        /* Media query para dispositivos muy pequeños */
+        @media screen and (max-width: 320px) {
+            .footer {
+                padding: 10px 0 5px;
+            }
+            
+            .footer-content {
+                padding: 0 2px;
+                gap: 8px;
+            }
+            
+            .developers-table {
+                font-size: 7px;
+            }
+            
+            .developers-table th,
+            .developers-table td {
+                padding: 2px 1px;
+            }
+            
+            .institution-logo {
+                max-width: 60px;
+            }
+            
+            .footer-section h3 {
+                font-size: 12px;
+                margin-bottom: 10px;
+            }
+            
+            .footer-section p {
+                font-size: 10px;
+                margin-bottom: 4px;
+            }
         }
 
         .analysis-section h4 {
@@ -1103,12 +2086,35 @@
             
             .tabs {
                 flex-direction: column;
-                align-items: center;
+                align-items: stretch;
+                margin-bottom: 30px;
+                gap: 2px;
+                border-bottom: none;
             }
             
             .tab-button {
                 width: 100%;
-                text-align: center;
+                padding: 16px 20px;
+                font-size: 14px;
+                min-width: auto;
+                border-bottom: 1px solid #e5e5e5;
+                border-radius: 8px 8px 0 0;
+                margin-bottom: 2px;
+            }
+            
+            .tab-button.active {
+                background: #ff6b35;
+                color: white;
+                border-bottom-color: #ff6b35;
+            }
+            
+            .tab-button:hover {
+                background: rgba(255, 107, 53, 0.1);
+                color: #ff6b35;
+            }
+            
+            .tab-button i {
+                font-size: 16px;
             }
             
             .title {
@@ -1117,6 +2123,879 @@
 
             .container {
                 padding: 20px;
+            }
+        }
+
+        /* Media queries extensos para tabs - todos los dispositivos */
+        
+        /* Monitores grandes (4K, ultrawide) */
+        @media screen and (min-width: 1920px) {
+            .tabs {
+                gap: 20px;
+                margin-bottom: 60px;
+            }
+            
+            .tab-button {
+                padding: 20px 40px;
+                font-size: 18px;
+                min-width: 180px;
+            }
+            
+            .tab-button i {
+                font-size: 20px;
+            }
+        }
+
+        /* Laptops grandes (1440p, 1600p) */
+        @media screen and (min-width: 1440px) and (max-width: 1919px) {
+            .tabs {
+                gap: 15px;
+                margin-bottom: 50px;
+            }
+            
+            .tab-button {
+                padding: 18px 36px;
+                font-size: 16px;
+                min-width: 160px;
+            }
+            
+            .tab-button i {
+                font-size: 18px;
+            }
+        }
+
+        /* Laptops estándar (1080p) */
+        @media screen and (min-width: 1200px) and (max-width: 1439px) {
+            .tabs {
+                gap: 10px;
+                margin-bottom: 45px;
+            }
+            
+            .tab-button {
+                padding: 16px 32px;
+                font-size: 15px;
+                min-width: 140px;
+            }
+        }
+
+        /* Tablets grandes (iPad Pro, Surface) */
+        @media screen and (min-width: 1024px) and (max-width: 1199px) {
+            .tabs {
+                gap: 8px;
+                margin-bottom: 40px;
+            }
+            
+            .tab-button {
+                padding: 14px 28px;
+                font-size: 14px;
+                min-width: 120px;
+            }
+            
+            .tab-button i {
+                font-size: 15px;
+            }
+        }
+
+        /* Tablets estándar (iPad, Android tablets) */
+        @media screen and (min-width: 769px) and (max-width: 1023px) {
+            .tabs {
+                gap: 6px;
+                margin-bottom: 35px;
+                flex-wrap: wrap;
+            }
+            
+            .tab-button {
+                padding: 12px 24px;
+                font-size: 13px;
+                min-width: 100px;
+                flex: 1;
+                max-width: 200px;
+            }
+            
+            .tab-button i {
+                font-size: 14px;
+            }
+        }
+
+        /* Móviles grandes (iPhone 12 Pro Max, Galaxy S21 Ultra) */
+        @media screen and (min-width: 428px) and (max-width: 768px) {
+            .tabs {
+                flex-direction: column;
+                align-items: stretch;
+                margin-bottom: 30px;
+                gap: 2px;
+                border-bottom: none;
+            }
+            
+            .tab-button {
+                width: 100%;
+                padding: 16px 20px;
+                font-size: 14px;
+                min-width: auto;
+                border-bottom: 1px solid #e5e5e5;
+                border-radius: 8px 8px 0 0;
+                margin-bottom: 2px;
+            }
+            
+            .tab-button.active {
+                background: #ff6b35;
+                color: white;
+                border-bottom-color: #ff6b35;
+            }
+            
+            .tab-button:hover {
+                background: rgba(255, 107, 53, 0.1);
+                color: #ff6b35;
+            }
+            
+            .tab-button i {
+                font-size: 16px;
+            }
+        }
+
+        /* Móviles estándar (iPhone 12, Galaxy S21) */
+        @media screen and (min-width: 390px) and (max-width: 427px) {
+            .tabs {
+                flex-direction: column;
+                align-items: stretch;
+                margin-bottom: 25px;
+                gap: 1px;
+                border-bottom: none;
+            }
+            
+            .tab-button {
+                width: 100%;
+                padding: 14px 16px;
+                font-size: 13px;
+                min-width: auto;
+                border-bottom: 1px solid #e5e5e5;
+                border-radius: 6px 6px 0 0;
+                margin-bottom: 1px;
+            }
+            
+            .tab-button.active {
+                background: #ff6b35;
+                color: white;
+                border-bottom-color: #ff6b35;
+            }
+            
+            .tab-button:hover {
+                background: rgba(255, 107, 53, 0.1);
+                color: #ff6b35;
+            }
+            
+            .tab-button i {
+                font-size: 14px;
+            }
+        }
+
+        /* Móviles pequeños (iPhone 12 mini, Galaxy S21) */
+        @media screen and (min-width: 360px) and (max-width: 389px) {
+            .tabs {
+                flex-direction: column;
+                align-items: stretch;
+                margin-bottom: 20px;
+                gap: 1px;
+                border-bottom: none;
+            }
+            
+            .tab-button {
+                width: 100%;
+                padding: 12px 14px;
+                font-size: 12px;
+                min-width: auto;
+                border-bottom: 1px solid #e5e5e5;
+                border-radius: 4px 4px 0 0;
+                margin-bottom: 1px;
+            }
+            
+            .tab-button.active {
+                background: #ff6b35;
+                color: white;
+                border-bottom-color: #ff6b35;
+            }
+            
+            .tab-button:hover {
+                background: rgba(255, 107, 53, 0.1);
+                color: #ff6b35;
+            }
+            
+            .tab-button i {
+                font-size: 13px;
+            }
+        }
+
+        /* Móviles muy pequeños (iPhone SE, Galaxy S10e) */
+        @media screen and (min-width: 320px) and (max-width: 359px) {
+            .tabs {
+                flex-direction: column;
+                align-items: stretch;
+                margin-bottom: 15px;
+                gap: 1px;
+                border-bottom: none;
+            }
+            
+            .tab-button {
+                width: 100%;
+                padding: 10px 12px;
+                font-size: 11px;
+                min-width: auto;
+                border-bottom: 1px solid #e5e5e5;
+                border-radius: 3px 3px 0 0;
+                margin-bottom: 1px;
+            }
+            
+            .tab-button.active {
+                background: #ff6b35;
+                color: white;
+                border-bottom-color: #ff6b35;
+            }
+            
+            .tab-button:hover {
+                background: rgba(255, 107, 53, 0.1);
+                color: #ff6b35;
+            }
+            
+            .tab-button i {
+                font-size: 12px;
+            }
+        }
+
+        /* Dispositivos muy pequeños (iPhone 5, Galaxy S8) */
+        @media screen and (max-width: 319px) {
+            .tabs {
+                flex-direction: column;
+                align-items: stretch;
+                margin-bottom: 10px;
+                gap: 1px;
+                border-bottom: none;
+            }
+            
+            .tab-button {
+                width: 100%;
+                padding: 8px 10px;
+                font-size: 10px;
+                min-width: auto;
+                border-bottom: 1px solid #e5e5e5;
+                border-radius: 2px 2px 0 0;
+                margin-bottom: 1px;
+            }
+            
+            .tab-button.active {
+                background: #ff6b35;
+                color: white;
+                border-bottom-color: #ff6b35;
+            }
+            
+            .tab-button:hover {
+                background: rgba(255, 107, 53, 0.1);
+                color: #ff6b35;
+            }
+            
+            .tab-button i {
+                font-size: 11px;
+            }
+        }
+
+        /* Media queries extensos para input y results panels - todos los dispositivos */
+        
+        /* Monitores grandes (4K, ultrawide) */
+        @media screen and (min-width: 1920px) {
+            .problem-container {
+                grid-template-columns: 1fr 1.8fr;
+                gap: 60px;
+                min-height: 600px;
+            }
+            
+            .input-panel {
+                padding: 40px;
+                border-radius: 12px;
+            }
+            
+            .results-panel {
+                padding: 40px;
+                border-radius: 12px;
+                min-height: 500px;
+            }
+            
+            .input-group {
+                margin-bottom: 32px;
+            }
+            
+            .input-group label {
+                font-size: 16px;
+                margin-bottom: 12px;
+            }
+            
+            .input-group input {
+                padding: 16px 20px;
+                font-size: 18px;
+                border-radius: 10px;
+            }
+            
+            .calculate-btn, .matlab-btn {
+                padding: 20px 32px;
+                font-size: 18px;
+                border-radius: 10px;
+            }
+        }
+
+        /* Laptops grandes (1440p, 1600p) */
+        @media screen and (min-width: 1440px) and (max-width: 1919px) {
+            .problem-container {
+                grid-template-columns: 1fr 1.7fr;
+                gap: 50px;
+                min-height: 550px;
+            }
+            
+            .input-panel {
+                padding: 36px;
+                border-radius: 10px;
+            }
+            
+            .results-panel {
+                padding: 36px;
+                border-radius: 10px;
+                min-height: 450px;
+            }
+            
+            .input-group {
+                margin-bottom: 28px;
+            }
+            
+            .input-group label {
+                font-size: 15px;
+                margin-bottom: 10px;
+            }
+            
+            .input-group input {
+                padding: 14px 18px;
+                font-size: 17px;
+                border-radius: 8px;
+            }
+            
+            .calculate-btn, .matlab-btn {
+                padding: 18px 28px;
+                font-size: 17px;
+                border-radius: 8px;
+            }
+        }
+
+        /* Laptops estándar (1080p) */
+        @media screen and (min-width: 1200px) and (max-width: 1439px) {
+            .problem-container {
+                grid-template-columns: 1fr 1.6fr;
+                gap: 40px;
+                min-height: 500px;
+            }
+            
+            .input-panel {
+                padding: 32px;
+            }
+            
+            .results-panel {
+                padding: 32px;
+                min-height: 400px;
+            }
+            
+            .input-group {
+                margin-bottom: 24px;
+            }
+            
+            .input-group label {
+                font-size: 14px;
+            }
+            
+            .input-group input {
+                padding: 12px 16px;
+                font-size: 16px;
+            }
+            
+            .calculate-btn, .matlab-btn {
+                padding: 16px 24px;
+                font-size: 15px;
+            }
+        }
+
+        /* Tablets grandes (iPad Pro, Surface) */
+        @media screen and (min-width: 1024px) and (max-width: 1199px) {
+            .problem-container {
+                grid-template-columns: 1fr 1.5fr;
+                gap: 35px;
+                min-height: 450px;
+            }
+            
+            .input-panel {
+                padding: 28px;
+            }
+            
+            .results-panel {
+                padding: 28px;
+                min-height: 350px;
+            }
+            
+            .input-group {
+                margin-bottom: 20px;
+            }
+            
+            .input-group label {
+                font-size: 13px;
+            }
+            
+            .input-group input {
+                padding: 10px 14px;
+                font-size: 15px;
+            }
+            
+            .calculate-btn, .matlab-btn {
+                padding: 14px 20px;
+                font-size: 14px;
+            }
+        }
+
+        /* Tablets estándar (iPad, Android tablets) */
+        @media screen and (min-width: 769px) and (max-width: 1023px) {
+            .problem-container {
+                grid-template-columns: 1fr;
+                gap: 30px;
+                min-height: auto;
+            }
+            
+            .input-panel {
+                padding: 24px;
+                order: 1;
+            }
+            
+            .results-panel {
+                padding: 24px;
+                min-height: 300px;
+                order: 2;
+            }
+            
+            .input-group {
+                margin-bottom: 18px;
+            }
+            
+            .input-group label {
+                font-size: 13px;
+            }
+            
+            .input-group input {
+                padding: 10px 12px;
+                font-size: 14px;
+            }
+            
+            .calculate-btn, .matlab-btn {
+                padding: 12px 18px;
+                font-size: 14px;
+            }
+        }
+
+        /* iPhone 14 Pro Max específico (430px de ancho) */
+        @media screen and (min-width: 430px) and (max-width: 430px) {
+            .container {
+                padding: 0 15px;
+                max-width: 100vw;
+                margin: 0 auto;
+            }
+            
+            .problem-container {
+                grid-template-columns: 1fr;
+                gap: 18px;
+                min-height: auto;
+                width: 100%;
+                max-width: 100%;
+            }
+            
+            .input-panel {
+                padding: 18px;
+                order: 1;
+                border-radius: 12px;
+                box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+                width: 100%;
+                max-width: 100%;
+                box-sizing: border-box;
+            }
+            
+            .results-panel {
+                padding: 18px;
+                min-height: 240px;
+                order: 2;
+                border-radius: 12px;
+                box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+                width: 100%;
+                max-width: 100%;
+                box-sizing: border-box;
+            }
+            
+            .input-group {
+                margin-bottom: 15px;
+                width: 100%;
+            }
+            
+            .input-group label {
+                font-size: 14px;
+                margin-bottom: 6px;
+            }
+            
+            .input-group input {
+                padding: 11px 13px;
+                font-size: 16px;
+                border-radius: 10px;
+                border-width: 2px;
+                width: 100%;
+                max-width: 100%;
+                box-sizing: border-box;
+            }
+            
+            .calculate-btn, .matlab-btn {
+                padding: 13px 18px;
+                font-size: 15px;
+                border-radius: 10px;
+                margin-bottom: 11px;
+                width: 100%;
+                max-width: 100%;
+                box-sizing: border-box;
+            }
+        }
+
+        /* Móviles grandes (iPhone 14 Pro Max, iPhone 12 Pro Max, Galaxy S21 Ultra) */
+        @media screen and (min-width: 428px) and (max-width: 768px) {
+            .container {
+                padding: 0 16px;
+                max-width: 100vw;
+                margin: 0 auto;
+            }
+            
+            .problem-container {
+                grid-template-columns: 1fr;
+                gap: 20px;
+                min-height: auto;
+                width: 100%;
+                max-width: 100%;
+            }
+            
+            .input-panel {
+                padding: 20px;
+                order: 1;
+                border-radius: 12px;
+                box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+                width: 100%;
+                max-width: 100%;
+                box-sizing: border-box;
+            }
+            
+            .results-panel {
+                padding: 20px;
+                min-height: 250px;
+                order: 2;
+                border-radius: 12px;
+                box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+                width: 100%;
+                max-width: 100%;
+                box-sizing: border-box;
+            }
+            
+            .input-group {
+                margin-bottom: 16px;
+                width: 100%;
+            }
+            
+            .input-group label {
+                font-size: 14px;
+                margin-bottom: 6px;
+            }
+            
+            .input-group input {
+                padding: 12px 14px;
+                font-size: 16px;
+                border-radius: 10px;
+                border-width: 2px;
+                width: 100%;
+                max-width: 100%;
+                box-sizing: border-box;
+            }
+            
+            .calculate-btn, .matlab-btn {
+                padding: 14px 20px;
+                font-size: 15px;
+                border-radius: 10px;
+                margin-bottom: 12px;
+                width: 100%;
+                max-width: 100%;
+                box-sizing: border-box;
+            }
+        }
+
+        /* Móviles estándar (iPhone 14 Pro Max, iPhone 12, Galaxy S21) */
+        @media screen and (min-width: 390px) and (max-width: 427px) {
+            .container {
+                padding: 0 12px;
+                max-width: 100vw;
+                margin: 0 auto;
+            }
+            
+            .problem-container {
+                grid-template-columns: 1fr;
+                gap: 16px;
+                min-height: auto;
+                width: 100%;
+                max-width: 100%;
+            }
+            
+            .input-panel {
+                padding: 16px;
+                order: 1;
+                border-radius: 10px;
+                box-shadow: 0 3px 12px rgba(0, 0, 0, 0.1);
+                width: 100%;
+                max-width: 100%;
+                box-sizing: border-box;
+            }
+            
+            .results-panel {
+                padding: 16px;
+                min-height: 200px;
+                order: 2;
+                border-radius: 10px;
+                box-shadow: 0 3px 12px rgba(0, 0, 0, 0.1);
+                width: 100%;
+                max-width: 100%;
+                box-sizing: border-box;
+            }
+            
+            .input-group {
+                margin-bottom: 14px;
+                width: 100%;
+            }
+            
+            .input-group label {
+                font-size: 13px;
+                margin-bottom: 5px;
+            }
+            
+            .input-group input {
+                padding: 10px 12px;
+                font-size: 15px;
+                border-radius: 8px;
+                border-width: 2px;
+                width: 100%;
+                max-width: 100%;
+                box-sizing: border-box;
+            }
+            
+            .calculate-btn, .matlab-btn {
+                padding: 12px 16px;
+                font-size: 14px;
+                border-radius: 8px;
+                margin-bottom: 10px;
+                width: 100%;
+                max-width: 100%;
+                box-sizing: border-box;
+            }
+        }
+
+        /* Móviles pequeños (iPhone 12 mini, Galaxy S21) */
+        @media screen and (min-width: 360px) and (max-width: 389px) {
+            .container {
+                padding: 0 10px;
+                max-width: 100vw;
+                margin: 0 auto;
+            }
+            
+            .problem-container {
+                grid-template-columns: 1fr;
+                gap: 12px;
+                min-height: auto;
+                width: 100%;
+                max-width: 100%;
+            }
+            
+            .input-panel {
+                padding: 14px;
+                order: 1;
+                border-radius: 8px;
+                box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+                width: 100%;
+                max-width: 100%;
+                box-sizing: border-box;
+            }
+            
+            .results-panel {
+                padding: 14px;
+                min-height: 180px;
+                order: 2;
+                border-radius: 8px;
+                box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+                width: 100%;
+                max-width: 100%;
+                box-sizing: border-box;
+            }
+            
+            .input-group {
+                margin-bottom: 12px;
+                width: 100%;
+            }
+            
+            .input-group label {
+                font-size: 12px;
+                margin-bottom: 4px;
+            }
+            
+            .input-group input {
+                padding: 8px 10px;
+                font-size: 14px;
+                border-radius: 6px;
+                border-width: 1px;
+                width: 100%;
+                max-width: 100%;
+                box-sizing: border-box;
+            }
+            
+            .calculate-btn, .matlab-btn {
+                padding: 10px 14px;
+                font-size: 13px;
+                border-radius: 6px;
+                margin-bottom: 8px;
+                width: 100%;
+                max-width: 100%;
+                box-sizing: border-box;
+            }
+        }
+
+        /* Móviles muy pequeños (iPhone SE, Galaxy S10e) */
+        @media screen and (min-width: 320px) and (max-width: 359px) {
+            .container {
+                padding: 0 8px;
+                max-width: 100vw;
+                margin: 0 auto;
+            }
+            
+            .problem-container {
+                grid-template-columns: 1fr;
+                gap: 10px;
+                min-height: auto;
+                width: 100%;
+                max-width: 100%;
+            }
+            
+            .input-panel {
+                padding: 12px;
+                order: 1;
+                border-radius: 6px;
+                box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+                width: 100%;
+                max-width: 100%;
+                box-sizing: border-box;
+            }
+            
+            .results-panel {
+                padding: 12px;
+                min-height: 160px;
+                order: 2;
+                border-radius: 6px;
+                box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+                width: 100%;
+                max-width: 100%;
+                box-sizing: border-box;
+            }
+            
+            .input-group {
+                margin-bottom: 10px;
+                width: 100%;
+            }
+            
+            .input-group label {
+                font-size: 11px;
+                margin-bottom: 3px;
+            }
+            
+            .input-group input {
+                padding: 6px 8px;
+                font-size: 13px;
+                border-radius: 4px;
+                border-width: 1px;
+                width: 100%;
+                max-width: 100%;
+                box-sizing: border-box;
+            }
+            
+            .calculate-btn, .matlab-btn {
+                padding: 8px 12px;
+                font-size: 12px;
+                border-radius: 4px;
+                margin-bottom: 6px;
+                width: 100%;
+                max-width: 100%;
+                box-sizing: border-box;
+            }
+        }
+
+        /* Dispositivos muy pequeños (iPhone 5, Galaxy S8) */
+        @media screen and (max-width: 319px) {
+            .container {
+                padding: 0 6px;
+                max-width: 100vw;
+                margin: 0 auto;
+            }
+            
+            .problem-container {
+                grid-template-columns: 1fr;
+                gap: 8px;
+                min-height: auto;
+                width: 100%;
+                max-width: 100%;
+            }
+            
+            .input-panel {
+                padding: 10px;
+                order: 1;
+                border-radius: 4px;
+                box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+                width: 100%;
+                max-width: 100%;
+                box-sizing: border-box;
+            }
+            
+            .results-panel {
+                padding: 10px;
+                min-height: 140px;
+                order: 2;
+                border-radius: 4px;
+                box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+                width: 100%;
+                max-width: 100%;
+                box-sizing: border-box;
+            }
+            
+            .input-group {
+                margin-bottom: 8px;
+                width: 100%;
+            }
+            
+            .input-group label {
+                font-size: 10px;
+                margin-bottom: 2px;
+            }
+            
+            .input-group input {
+                padding: 5px 6px;
+                font-size: 12px;
+                border-radius: 3px;
+                border-width: 1px;
+                width: 100%;
+                max-width: 100%;
+                box-sizing: border-box;
+            }
+            
+            .calculate-btn, .matlab-btn {
+                padding: 6px 10px;
+                font-size: 11px;
+                border-radius: 3px;
+                margin-bottom: 4px;
+                width: 100%;
+                max-width: 100%;
+                box-sizing: border-box;
             }
         }
     </style>
@@ -3347,14 +5226,15 @@ end`;
                 },
                 options: {
                     responsive: true,
-                    maintainAspectRatio: true,
+                    maintainAspectRatio: false,
                     aspectRatio: 1.6,
+                    resizeDelay: 0,
                     plugins: {
                         title: {
                             display: true,
                             text: 'Trayectoria del Proyectil - Análisis Físico',
                             font: {
-                                size: 18,
+                                size: window.innerWidth <= 480 ? 14 : 18,
                                 weight: 'bold'
                             },
                             color: '#2c3e50'
@@ -3364,9 +5244,9 @@ end`;
                             position: 'top',
                             labels: {
                                 usePointStyle: true,
-                                padding: 20,
+                                padding: window.innerWidth <= 480 ? 10 : 20,
                                 font: {
-                                    size: 12,
+                                    size: window.innerWidth <= 480 ? 10 : 12,
                                     weight: 'bold'
                                 }
                             }
@@ -3528,14 +5408,15 @@ end`;
                 },
                 options: {
                     responsive: true,
-                    maintainAspectRatio: true,
+                    maintainAspectRatio: false,
                     aspectRatio: 1.5,
+                    resizeDelay: 0,
                     plugins: {
                         title: {
                             display: true,
                             text: 'Análisis de Rentabilidad',
                             font: {
-                                size: 16,
+                                size: window.innerWidth <= 480 ? 14 : 16,
                                 weight: 'bold'
                             }
                         },
@@ -3674,14 +5555,15 @@ end`;
                 },
                 options: {
                     responsive: true,
-                    maintainAspectRatio: true,
+                    maintainAspectRatio: false,
                     aspectRatio: 1.5,
+                    resizeDelay: 0,
                     plugins: {
                         title: {
                             display: true,
                             text: 'Diseño de Arco Parabólico',
                             font: {
-                                size: 16,
+                                size: window.innerWidth <= 480 ? 14 : 16,
                                 weight: 'bold'
                             }
                         },
@@ -4429,6 +6311,7 @@ ${results.arch.results.replace(/<[^>]*>/g, '').substring(0, 500)}...
             return true;
         }
 
+
         // Funciones de validación de datos
         function validateProjectileInputs() {
             const a = parseFloat(document.getElementById('a_coeff').value);
@@ -4547,10 +6430,78 @@ ${results.arch.results.replace(/<[^>]*>/g, '').substring(0, 500)}...
             });
         }
 
+        // Función para redimensionar gráficas
+        function resizeCharts() {
+            if (window.projectileChart) {
+                window.projectileChart.resize();
+            }
+            if (window.profitChart) {
+                window.profitChart.resize();
+            }
+            if (window.archChart) {
+                window.archChart.resize();
+            }
+        }
+
+        // Función para forzar responsive en móviles
+        function forceMobileResponsive() {
+            if (window.innerWidth <= 768) {
+                // Forzar ancho máximo en todos los elementos
+                const allElements = document.querySelectorAll('*');
+                allElements.forEach(element => {
+                    if (element.style) {
+                        element.style.maxWidth = '100%';
+                        element.style.wordWrap = 'break-word';
+                        element.style.overflowWrap = 'break-word';
+                    }
+                });
+                
+                // Forzar ancho en modales
+                const modals = document.querySelectorAll('.modal-content');
+                modals.forEach(modal => {
+                    modal.style.width = '95%';
+                    modal.style.maxWidth = '95%';
+                });
+                
+                // Forzar ancho en botones
+                const buttons = document.querySelectorAll('.btn, .calculate-btn, .matlab-btn, .analysis-button');
+                buttons.forEach(button => {
+                    button.style.width = '100%';
+                    button.style.maxWidth = '100%';
+                });
+                
+                // Forzar ancho en inputs
+                const inputs = document.querySelectorAll('input, textarea, select');
+                inputs.forEach(input => {
+                    input.style.width = '100%';
+                    input.style.maxWidth = '100%';
+                });
+                
+                // Forzar ancho en contenedores
+                const containers = document.querySelectorAll('.container, .problem-container, .input-panel, .results-panel');
+                containers.forEach(container => {
+                    container.style.width = '100%';
+                    container.style.maxWidth = '100%';
+                });
+            }
+        }
+
+        // Listener para redimensionar gráficas
+        window.addEventListener('resize', function() {
+            setTimeout(resizeCharts, 100);
+            setTimeout(forceMobileResponsive, 100);
+        });
+
+        // Forzar responsive al cargar la página
+        window.addEventListener('load', function() {
+            setTimeout(forceMobileResponsive, 100);
+        });
+
         // Inicializar la aplicación
         window.onload = function() {
             // Inicializar contenedores de gráficos
             initializeChartContainers();
+            
             
             // Esperar a que el DOM esté completamente renderizado
             setTimeout(() => {
