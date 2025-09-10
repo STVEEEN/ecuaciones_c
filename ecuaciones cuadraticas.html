@@ -1,0 +1,914 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Funciones Cuadráticas y sus Aplicaciones - ITR</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+            background: #ffffff;
+            color: #1a1a1a;
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        .header {
+            background: #000000;
+            padding: 32px 20px;
+            text-align: center;
+            color: white;
+            border-bottom: 1px solid #e5e5e5;
+        }
+
+        .institution {
+            font-size: 14px;
+            font-weight: 400;
+            margin-bottom: 8px;
+            opacity: 0.8;
+            letter-spacing: 0.5px;
+        }
+
+        .title {
+            font-size: 32px;
+            font-weight: 300;
+            margin: 16px 0;
+            letter-spacing: -0.5px;
+        }
+
+        .subtitle {
+            font-size: 16px;
+            font-weight: 400;
+            opacity: 0.9;
+            font-style: italic;
+        }
+
+        .student-info {
+            background: #f8f8f8;
+            padding: 20px;
+            margin: 0;
+            text-align: center;
+            border-bottom: 1px solid #e5e5e5;
+            font-size: 14px;
+            color: #666;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        .tabs {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 40px;
+            gap: 0;
+            border-bottom: 1px solid #e5e5e5;
+        }
+
+        .tab-button {
+            padding: 16px 32px;
+            background: transparent;
+            color: #666;
+            border: none;
+            border-bottom: 2px solid transparent;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            font-size: 15px;
+            font-weight: 500;
+            font-family: inherit;
+        }
+
+        .tab-button.active {
+            color: #000;
+            border-bottom-color: #000;
+        }
+
+        .tab-button:hover {
+            color: #000;
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        .problem-container {
+            display: grid;
+            grid-template-columns: 1fr 1.5fr;
+            gap: 40px;
+        }
+
+        .input-panel {
+            background: #ffffff;
+            padding: 32px;
+            border: 1px solid #e5e5e5;
+            border-radius: 8px;
+            height: fit-content;
+        }
+
+        .results-panel {
+            background: #ffffff;
+            padding: 32px;
+            border: 1px solid #e5e5e5;
+            border-radius: 8px;
+        }
+
+        .problem-description {
+            background: #f8f8f8;
+            padding: 24px;
+            border-radius: 6px;
+            margin-bottom: 32px;
+            border-left: 3px solid #000;
+            font-size: 14px;
+            line-height: 1.5;
+        }
+
+        .input-group {
+            margin-bottom: 24px;
+        }
+
+        .input-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: #333;
+            font-size: 14px;
+        }
+
+        .input-group input {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 16px;
+            font-family: 'SF Mono', Monaco, 'Cascadia Code', 'Roboto Mono', Consolas, 'Courier New', monospace;
+            transition: border-color 0.2s ease;
+        }
+
+        .input-group input:focus {
+            border-color: #000;
+            outline: none;
+        }
+
+        .calculate-btn {
+            width: 100%;
+            padding: 16px;
+            background: #000;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-size: 15px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            font-family: inherit;
+        }
+
+        .calculate-btn:hover {
+            background: #333;
+        }
+
+        .equation-display {
+            background: #f0f0f0;
+            padding: 20px;
+            border-radius: 6px;
+            text-align: center;
+            font-family: 'SF Mono', Monaco, 'Cascadia Code', 'Roboto Mono', Consolas, 'Courier New', monospace;
+            font-size: 18px;
+            font-weight: 600;
+            margin: 24px 0;
+            border: 1px solid #ddd;
+            color: #333;
+        }
+
+        .result-section {
+            margin: 20px 0;
+            padding: 20px;
+            background: #fafafa;
+            border-radius: 6px;
+            border-left: 3px solid #000;
+        }
+
+        .result-section h4 {
+            color: #000;
+            margin-bottom: 12px;
+            font-size: 16px;
+            font-weight: 600;
+        }
+
+        .result-value {
+            font-size: 20px;
+            font-weight: 600;
+            color: #000;
+            margin: 8px 0;
+            font-family: 'SF Mono', Monaco, 'Cascadia Code', 'Roboto Mono', Consolas, 'Courier New', monospace;
+        }
+
+        canvas {
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            max-width: 100%;
+            background: white;
+            margin-top: 20px;
+        }
+
+        .math-formula {
+            font-family: 'SF Mono', Monaco, 'Cascadia Code', 'Roboto Mono', Consolas, 'Courier New', monospace;
+            font-style: normal;
+            color: #666;
+            background: #f5f5f5;
+            padding: 2px 6px;
+            border-radius: 3px;
+        }
+
+        .analysis-section {
+            background: #f5f5f5;
+            padding: 24px;
+            border-radius: 6px;
+            margin: 24px 0;
+            border-left: 3px solid #666;
+        }
+
+        .analysis-section h4 {
+            color: #333;
+            margin-bottom: 12px;
+            font-weight: 600;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            font-family: inherit;
+            font-size: 14px;
+        }
+
+        th {
+            background: #000;
+            color: white;
+            padding: 12px;
+            text-align: center;
+            font-weight: 500;
+        }
+
+        td {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: center;
+        }
+
+        tr:nth-child(even) {
+            background: #f8f8f8;
+        }
+
+        @media (max-width: 768px) {
+            .problem-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .tabs {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .tab-button {
+                width: 100%;
+                text-align: center;
+            }
+            
+            .title {
+                font-size: 24px;
+            }
+
+            .container {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="institution">
+            Salesianos - Instituto Técnico Ricaldone<br>
+            Bachillerato - Grupo 1 B - 3° año
+        </div>
+        <div class="title">Funciones Cuadráticas y sus Aplicaciones</div>
+        <div class="subtitle">Herramientas Tecnológicas para Resolver Problemas Matemáticos Reales</div>
+    </div>
+
+    <!--<div class="student-info">
+        <p><strong>Estudiante:</strong> Nelson Alexander Sandoval Aguilar</p>
+        <p><strong>Carnet:</strong> 20200300</p>
+        <p><strong>Fecha de Entrega:</strong> 3 de septiembre de 2025</p>
+    </div> -->
+    
+    <div class="container">
+        <div class="tabs">
+            <button class="tab-button active" onclick="showTab('projectile')">Trayectoria de Proyectil</button>
+            <button class="tab-button" onclick="showTab('profit')">Maximización de Ganancias</button>
+            <button class="tab-button" onclick="showTab('arch')">Diseño de Arcos Parabólicos</button>
+        </div>
+
+        <!-- TAB 1: TRAYECTORIA DE PROYECTIL -->
+        <div id="projectile" class="tab-content active">
+            <div class="problem-container">
+                <div class="input-panel">
+                    <h2>Lanzamiento de Proyectil</h2>
+                    <div class="problem-description">
+                        <strong>Problemática Real:</strong><br>
+                        "Un jugador de básquetbol lanza una pelota desde una altura de 2 metros. 
+                        La pelota sigue la trayectoria h(t) = -5t² + 10t + 2, donde h es la altura en metros 
+                        y t es el tiempo en segundos. ¿Cuándo alcanza la altura máxima? ¿Cuál es esa altura? ¿Cuándo toca el suelo?"
+                    </div>
+                    
+                    <div class="input-group">
+                        <label for="a_coeff">Coeficiente a (gravedad): <span class="math-formula">-½g</span></label>
+                        <input type="number" id="a_coeff" value="-5" step="0.1" placeholder="-5">
+                    </div>
+                    
+                    <div class="input-group">
+                        <label for="b_coeff">Coeficiente b (velocidad inicial): <span class="math-formula">v₀</span></label>
+                        <input type="number" id="b_coeff" value="10" step="0.1" placeholder="10">
+                    </div>
+                    
+                    <div class="input-group">
+                        <label for="c_coeff">Coeficiente c (altura inicial): <span class="math-formula">h₀</span></label>
+                        <input type="number" id="c_coeff" value="2" step="0.1" placeholder="2">
+                    </div>
+                    
+                    <button class="calculate-btn" onclick="calculateProjectile()">Analizar Trayectoria</button>
+                    
+                    <div class="analysis-section">
+                        <h4>Análisis Manual Tradicional</h4>
+                        <p><strong>Fórmula general:</strong> <span class="math-formula">h(t) = at² + bt + c</span></p>
+                        <p><strong>Tiempo máximo:</strong> <span class="math-formula">t = -b/(2a)</span></p>
+                        <p><strong>Altura máxima:</strong> <span class="math-formula">h(tₘₐₓ) = a(tₘₐₓ)² + b(tₘₐₓ) + c</span></p>
+                    </div>
+                </div>
+                
+                <div class="results-panel">
+                    <h2>Resultados del Análisis</h2>
+                    
+                    <div class="equation-display" id="projectileEquation">
+                        h(t) = -5t² + 10t + 2
+                    </div>
+                    
+                    <div id="projectileResults"></div>
+                    
+                    <canvas id="projectileCanvas" width="500" height="350"></canvas>
+                </div>
+            </div>
+        </div>
+
+        <!-- TAB 2: MAXIMIZACIÓN DE GANANCIAS -->
+        <div id="profit" class="tab-content">
+            <div class="problem-container">
+                <div class="input-panel">
+                    <h2>Maximización de Ganancias</h2>
+                    <div class="problem-description">
+                        <strong>Problemática Real:</strong><br>
+                        "Una empresa vende camisetas. Si fija el precio en x dólares, vende (100 - x) camisetas por día. 
+                        El costo de producción es de $20 por camiseta. ¿A qué precio debe vender para maximizar las ganancias? 
+                        ¿Cuál será la ganancia máxima?"
+                    </div>
+                    
+                    <div class="input-group">
+                        <label for="max_quantity">Cantidad máxima vendible (cuando precio = $0):</label>
+                        <input type="number" id="max_quantity" value="100" step="1" placeholder="100">
+                    </div>
+                    
+                    <div class="input-group">
+                        <label for="production_cost">Costo de producción por unidad ($):</label>
+                        <input type="number" id="production_cost" value="20" step="0.1" placeholder="20">
+                    </div>
+                    
+                    <div class="input-group">
+                        <label for="fixed_cost">Costos fijos adicionales ($):</label>
+                        <input type="number" id="fixed_cost" value="0" step="1" placeholder="0">
+                    </div>
+                    
+                    <button class="calculate-btn" onclick="calculateProfit()">Optimizar Ganancias</button>
+                    
+                    <div class="analysis-section">
+                        <h4>Análisis Matemático</h4>
+                        <p><strong>Ingresos:</strong> <span class="math-formula">I = x(cantidad) = x(100-x) = 100x - x²</span></p>
+                        <p><strong>Costos:</strong> <span class="math-formula">C = 20(100-x) = 2000 - 20x</span></p>
+                        <p><strong>Ganancia:</strong> <span class="math-formula">G = I - C = -x² + 120x - 2000</span></p>
+                    </div>
+                </div>
+                
+                <div class="results-panel">
+                    <h2>Análisis de Rentabilidad</h2>
+                    
+                    <div class="equation-display" id="profitEquation">
+                        G(x) = -x² + 120x - 2000
+                    </div>
+                    
+                    <div id="profitResults"></div>
+                    
+                    <canvas id="profitCanvas" width="500" height="350"></canvas>
+                </div>
+            </div>
+        </div>
+
+        <!-- TAB 3: DISEÑO DE ARCOS -->
+        <div id="arch" class="tab-content">
+            <div class="problem-container">
+                <div class="input-panel">
+                    <h2>Diseño de Arco Parabólico</h2>
+                    <div class="problem-description">
+                        <strong>Problemática Real:</strong><br>
+                        "Se necesita construir un arco parabólico para un puente. El arco tiene 20 metros de ancho 
+                        en la base y 8 metros de altura máxima en el centro. ¿Cuál es la ecuación que describe el arco? 
+                        Si se colocan soportes cada 2 metros, ¿qué altura tendrá cada soporte?"
+                    </div>
+                    
+                    <div class="input-group">
+                        <label for="arch_width">Ancho total del arco (metros):</label>
+                        <input type="number" id="arch_width" value="20" step="0.1" placeholder="20">
+                    </div>
+                    
+                    <div class="input-group">
+                        <label for="arch_height">Altura máxima del arco (metros):</label>
+                        <input type="number" id="arch_height" value="8" step="0.1" placeholder="8">
+                    </div>
+                    
+                    <div class="input-group">
+                        <label for="support_spacing">Separación entre soportes (metros):</label>
+                        <input type="number" id="support_spacing" value="2" step="0.1" placeholder="2">
+                    </div>
+                    
+                    <button class="calculate-btn" onclick="calculateArch()">Diseñar Arco</button>
+                    
+                    <div class="analysis-section">
+                        <h4>Análisis de Ingeniería</h4>
+                        <p><strong>Forma estándar:</strong> <span class="math-formula">y = a(x-h)² + k</span></p>
+                        <p><strong>Vértice:</strong> <span class="math-formula">(h, k) = (ancho/2, altura_max)</span></p>
+                        <p><strong>Condición:</strong> Pasa por (0,0) y (ancho,0)</p>
+                    </div>
+                </div>
+                
+                <div class="results-panel">
+                    <h2>Especificaciones del Arco</h2>
+                    
+                    <div class="equation-display" id="archEquation">
+                        y = -0.08(x-10)² + 8
+                    </div>
+                    
+                    <div id="archResults"></div>
+                    
+                    <canvas id="archCanvas" width="500" height="350"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function showTab(tabName) {
+            const tabs = document.querySelectorAll('.tab-content');
+            tabs.forEach(tab => tab.classList.remove('active'));
+            
+            document.getElementById(tabName).classList.add('active');
+            
+            const buttons = document.querySelectorAll('.tab-button');
+            buttons.forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+        }
+
+        function calculateProjectile() {
+            const a = parseFloat(document.getElementById('a_coeff').value);
+            const b = parseFloat(document.getElementById('b_coeff').value);
+            const c = parseFloat(document.getElementById('c_coeff').value);
+            
+            document.getElementById('projectileEquation').textContent = 
+                `h(t) = ${a}t² + ${b}t + ${c}`;
+            
+            const timeMax = -b / (2 * a);
+            const heightMax = a * timeMax * timeMax + b * timeMax + c;
+            
+            const discriminant = b * b - 4 * a * c;
+            const timeGround1 = (-b + Math.sqrt(discriminant)) / (2 * a);
+            const timeGround2 = (-b - Math.sqrt(discriminant)) / (2 * a);
+            const timeGround = Math.max(timeGround1, timeGround2);
+            
+            const results = `
+                <div class="result-section">
+                    <h4>Tiempo de altura máxima</h4>
+                    <div class="result-value">${timeMax.toFixed(2)} segundos</div>
+                    <p><small>Calculado con: t = -b/(2a) = -${b}/(2×${a}) = ${timeMax.toFixed(2)}s</small></p>
+                </div>
+                <div class="result-section">
+                    <h4>Altura máxima</h4>
+                    <div class="result-value">${heightMax.toFixed(2)} metros</div>
+                    <p><small>h(${timeMax.toFixed(1)}) = ${a}(${timeMax.toFixed(1)})² + ${b}(${timeMax.toFixed(1)}) + ${c} = ${heightMax.toFixed(1)}m</small></p>
+                </div>
+                <div class="result-section">
+                    <h4>Tiempo hasta tocar el suelo</h4>
+                    <div class="result-value">${timeGround.toFixed(2)} segundos</div>
+                    <p><small>Resolviendo: ${a}t² + ${b}t + ${c} = 0</small></p>
+                </div>
+                <div class="analysis-section">
+                    <h4>Conclusión</h4>
+                    <p><strong>Resultado:</strong> La pelota alcanza ${heightMax.toFixed(1)} metros de altura máxima en ${timeMax.toFixed(1)} segundo y toca el suelo a los ${timeGround.toFixed(2)} segundos.</p>
+                </div>
+            `;
+            
+            document.getElementById('projectileResults').innerHTML = results;
+            drawProjectileGraph(a, b, c, timeGround, timeMax, heightMax);
+        }
+
+        function drawProjectileGraph(a, b, c, timeGround, timeMax, heightMax) {
+            const canvas = document.getElementById('projectileCanvas');
+            const ctx = canvas.getContext('2d');
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            
+            const padding = 50;
+            const graphWidth = canvas.width - 2 * padding;
+            const graphHeight = canvas.height - 2 * padding;
+            
+            const maxTime = Math.max(timeGround + 0.5, 3);
+            const maxHeight = Math.max(heightMax + 1, 8);
+            const scaleX = graphWidth / maxTime;
+            const scaleY = graphHeight / maxHeight;
+            
+            // Grid
+            ctx.strokeStyle = '#f0f0f0';
+            ctx.lineWidth = 1;
+            for (let i = 0; i <= maxTime; i += 0.5) {
+                const x = padding + i * scaleX;
+                ctx.beginPath();
+                ctx.moveTo(x, padding);
+                ctx.lineTo(x, canvas.height - padding);
+                ctx.stroke();
+            }
+            for (let i = 0; i <= maxHeight; i += 1) {
+                const y = canvas.height - padding - i * scaleY;
+                ctx.beginPath();
+                ctx.moveTo(padding, y);
+                ctx.lineTo(canvas.width - padding, y);
+                ctx.stroke();
+            }
+            
+            // Axes
+            ctx.strokeStyle = '#333';
+            ctx.lineWidth = 2;
+            ctx.beginPath();
+            ctx.moveTo(padding, padding);
+            ctx.lineTo(padding, canvas.height - padding);
+            ctx.lineTo(canvas.width - padding, canvas.height - padding);
+            ctx.stroke();
+            
+            // Labels
+            ctx.fillStyle = '#333';
+            ctx.font = '12px -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif';
+            ctx.fillText('Tiempo (segundos)', canvas.width/2 - 40, canvas.height - 15);
+            ctx.save();
+            ctx.translate(15, canvas.height/2);
+            ctx.rotate(-Math.PI/2);
+            ctx.fillText('Altura (metros)', -40, 0);
+            ctx.restore();
+            
+            // Trajectory
+            ctx.strokeStyle = '#000';
+            ctx.lineWidth = 3;
+            ctx.beginPath();
+            
+            for (let t = 0; t <= timeGround; t += 0.01) {
+                const h = a * t * t + b * t + c;
+                if (h >= 0) {
+                    const x = padding + t * scaleX;
+                    const y = canvas.height - padding - h * scaleY;
+                    
+                    if (t === 0) {
+                        ctx.moveTo(x, y);
+                    } else {
+                        ctx.lineTo(x, y);
+                    }
+                }
+            }
+            ctx.stroke();
+            
+            // Maximum point
+            const xMax = padding + timeMax * scaleX;
+            const yMax = canvas.height - padding - heightMax * scaleY;
+            ctx.fillStyle = '#000';
+            ctx.beginPath();
+            ctx.arc(xMax, yMax, 6, 0, 2 * Math.PI);
+            ctx.fill();
+            
+            ctx.fillStyle = '#333';
+            ctx.font = '11px -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif';
+            ctx.fillText(`Máximo: (${timeMax.toFixed(1)}s, ${heightMax.toFixed(1)}m)`, xMax + 10, yMax - 10);
+        }
+
+        function calculateProfit() {
+            const maxQuantity = parseFloat(document.getElementById('max_quantity').value);
+            const productionCost = parseFloat(document.getElementById('production_cost').value);
+            const fixedCost = parseFloat(document.getElementById('fixed_cost').value);
+            
+            const a = -1;
+            const b = maxQuantity + productionCost;
+            const c = -(productionCost * maxQuantity) - fixedCost;
+            
+            document.getElementById('profitEquation').textContent = 
+                `Ganancia(x) = ${a}x² + ${b}x + ${c}`;
+            
+            const optimalPrice = -b / (2 * a);
+            const maxProfit = a * optimalPrice * optimalPrice + b * optimalPrice + c;
+            const quantitySold = maxQuantity - optimalPrice;
+            const revenue = optimalPrice * quantitySold;
+            const totalCosts = productionCost * quantitySold + fixedCost;
+            
+            const results = `
+                <div class="result-section">
+                    <h4>Precio óptimo</h4>
+                    <div class="result-value">$${optimalPrice.toFixed(2)}</div>
+                    <p><small>Precio calculado con: x = -b/(2a) = -${b}/(2×${a}) = $${optimalPrice.toFixed(0)}</small></p>
+                </div>
+                <div class="result-section">
+                    <h4>Ganancia máxima</h4>
+                    <div class="result-value">$${maxProfit.toFixed(2)}</div>
+                </div>
+                <div class="result-section">
+                    <h4>Cantidad vendida</h4>
+                    <div class="result-value">${quantitySold.toFixed(0)} unidades</div>
+                    <p><small>Cantidad = ${maxQuantity} - ${optimalPrice.toFixed(0)} = ${quantitySold.toFixed(0)} camisetas</small></p>
+                </div>
+                <div class="analysis-section">
+                    <h4>Análisis Financiero Completo</h4>
+                    <p><strong>Ingresos totales:</strong> $${revenue.toFixed(2)}<br>
+                    <strong>Costos totales:</strong> $${totalCosts.toFixed(2)}<br>
+                    <strong>Ganancia neta:</strong> $${maxProfit.toFixed(2)}<br>
+                    <strong>Margen de ganancia:</strong> ${((maxProfit/revenue)*100).toFixed(1)}%</p>
+                    <p><strong>Resultado:</strong> El precio óptimo es $${optimalPrice.toFixed(0)}, vendiendo ${quantitySold.toFixed(0)} camisetas con una ganancia máxima de $${Math.round(maxProfit)}.</p>
+                </div>
+            `;
+            
+            document.getElementById('profitResults').innerHTML = results;
+            drawProfitGraph(a, b, c, optimalPrice, maxProfit, maxQuantity);
+        }
+
+        function drawProfitGraph(a, b, c, optimalPrice, maxProfit, maxQuantity) {
+            const canvas = document.getElementById('profitCanvas');
+            const ctx = canvas.getContext('2d');
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            
+            const padding = 50;
+            const graphWidth = canvas.width - 2 * padding;
+            const graphHeight = canvas.height - 2 * padding;
+            
+            const maxPrice = Math.max(optimalPrice * 1.5, maxQuantity);
+            const minProfit = Math.min(c, -500);
+            const profitRange = maxProfit - minProfit;
+            const scaleX = graphWidth / maxPrice;
+            const scaleY = graphHeight / profitRange;
+            
+            // Zero line
+            const zeroY = canvas.height - padding - (0 - minProfit) * scaleY;
+            ctx.strokeStyle = '#ccc';
+            ctx.lineWidth = 1;
+            ctx.setLineDash([5, 5]);
+            ctx.beginPath();
+            ctx.moveTo(padding, zeroY);
+            ctx.lineTo(canvas.width - padding, zeroY);
+            ctx.stroke();
+            ctx.setLineDash([]);
+            
+            // Axes
+            ctx.strokeStyle = '#333';
+            ctx.lineWidth = 2;
+            ctx.beginPath();
+            ctx.moveTo(padding, padding);
+            ctx.lineTo(padding, canvas.height - padding);
+            ctx.lineTo(canvas.width - padding, canvas.height - padding);
+            ctx.stroke();
+            
+            ctx.fillStyle = '#333';
+            ctx.font = '12px -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif';
+            ctx.fillText('Precio ($)', canvas.width/2 - 25, canvas.height - 15);
+            ctx.save();
+            ctx.translate(15, canvas.height/2);
+            ctx.rotate(-Math.PI/2);
+            ctx.fillText('Ganancia ($)', -35, 0);
+            ctx.restore();
+            
+            // Profit function
+            ctx.strokeStyle = '#000';
+            ctx.lineWidth = 3;
+            ctx.beginPath();
+            
+            for (let p = 0; p <= maxPrice; p += 0.5) {
+                const profit = a * p * p + b * p + c;
+                const x = padding + p * scaleX;
+                const y = canvas.height - padding - (profit - minProfit) * scaleY;
+                
+                if (p === 0) {
+                    ctx.moveTo(x, y);
+                } else {
+                    ctx.lineTo(x, y);
+                }
+            }
+            ctx.stroke();
+            
+            // Optimal point
+            const xOpt = padding + optimalPrice * scaleX;
+            const yOpt = canvas.height - padding - (maxProfit - minProfit) * scaleY;
+            ctx.fillStyle = '#000';
+            ctx.beginPath();
+            ctx.arc(xOpt, yOpt, 6, 0, 2 * Math.PI);
+            ctx.fill();
+            
+            ctx.fillStyle = '#333';
+            ctx.font = '11px -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif';
+            ctx.fillText(`Óptimo: (${optimalPrice.toFixed(0)}, ${Math.round(maxProfit)})`, xOpt + 10, yOpt - 10);
+            
+            // Break-even label
+            ctx.fillStyle = '#666';
+            ctx.font = '10px -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif';
+            ctx.fillText('Punto de equilibrio', canvas.width - 120, zeroY - 5);
+        }
+
+        function calculateArch() {
+            const width = parseFloat(document.getElementById('arch_width').value);
+            const height = parseFloat(document.getElementById('arch_height').value);
+            const spacing = parseFloat(document.getElementById('support_spacing').value);
+            
+            const h = width / 2;
+            const k = height;
+            const a = -height / (h * h);
+            
+            document.getElementById('archEquation').textContent = 
+                `y = ${a.toFixed(4)}(x - ${h})² + ${k}`;
+            
+            const supportPositions = [];
+            for (let x = 0; x <= width; x += spacing) {
+                const y = a * (x - h) * (x - h) + k;
+                supportPositions.push({x: x, y: Math.max(0, y)});
+            }
+            
+            let supportTable = `
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Posición (m)</th>
+                            <th>Altura (m)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+            `;
+            
+            supportPositions.forEach((support, index) => {
+                supportTable += `
+                    <tr>
+                        <td>${support.x.toFixed(1)}</td>
+                        <td>${support.y.toFixed(2)}</td>
+                    </tr>
+                `;
+            });
+            supportTable += '</tbody></table>';
+            
+            const results = `
+                <div class="result-section">
+                    <h4>Ecuación del arco</h4>
+                    <div class="result-value">y = ${a.toFixed(4)}(x - ${h})² + ${k}</div>
+                    <p><small>Forma estándar de parábola con vértice en (${h}, ${k})</small></p>
+                </div>
+                <div class="result-section">
+                    <h4>Especificaciones de diseño</h4>
+                    <p><strong>Ancho total:</strong> ${width} metros<br>
+                    <strong>Altura máxima:</strong> ${height} metros<br>
+                    <strong>Separación de soportes:</strong> ${spacing} metros<br>
+                    <strong>Número de soportes:</strong> ${supportPositions.length}</p>
+                </div>
+                <div class="result-section">
+                    <h4>Tabla de alturas de soportes</h4>
+                    ${supportTable}
+                </div>
+                <div class="analysis-section">
+                    <h4>Análisis de Ingeniería</h4>
+                    <p><strong>Resultado:</strong> El arco sigue la ecuación y = ${a.toFixed(3)}(x-${h})² + ${k}, con soportes de alturas variables desde 0m en los extremos hasta ${k}m en el centro.</p>
+                </div>
+            `;
+            
+            document.getElementById('archResults').innerHTML = results;
+            drawArchGraph(a, h, k, width, supportPositions);
+        }
+
+        function drawArchGraph(a, h, k, width, supports) {
+            const canvas = document.getElementById('archCanvas');
+            const ctx = canvas.getContext('2d');
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            
+            const padding = 40;
+            const graphWidth = canvas.width - 2 * padding;
+            const graphHeight = canvas.height - 2 * padding;
+            
+            const scaleX = graphWidth / (width + 2);
+            const scaleY = graphHeight / (k + 2);
+            
+            // Grid
+            ctx.strokeStyle = '#f0f0f0';
+            ctx.lineWidth = 1;
+            for (let x = 0; x <= width; x += 2) {
+                const screenX = padding + x * scaleX;
+                ctx.beginPath();
+                ctx.moveTo(screenX, padding);
+                ctx.lineTo(screenX, canvas.height - padding);
+                ctx.stroke();
+            }
+            for (let y = 0; y <= k; y += 1) {
+                const screenY = canvas.height - padding - y * scaleY;
+                ctx.beginPath();
+                ctx.moveTo(padding, screenY);
+                ctx.lineTo(canvas.width - padding, screenY);
+                ctx.stroke();
+            }
+            
+            // Base
+            ctx.strokeStyle = '#666';
+            ctx.lineWidth = 4;
+            ctx.beginPath();
+            ctx.moveTo(padding - 10, canvas.height - padding + 5);
+            ctx.lineTo(canvas.width - padding + 10, canvas.height - padding + 5);
+            ctx.stroke();
+            
+            // Arch
+            ctx.strokeStyle = '#000';
+            ctx.lineWidth = 3;
+            ctx.beginPath();
+            
+            for (let x = 0; x <= width; x += 0.1) {
+                const y = a * (x - h) * (x - h) + k;
+                const screenX = padding + x * scaleX;
+                const screenY = canvas.height - padding - y * scaleY;
+                
+                if (x === 0) {
+                    ctx.moveTo(screenX, screenY);
+                } else {
+                    ctx.lineTo(screenX, screenY);
+                }
+            }
+            ctx.stroke();
+            
+            // Supports
+            ctx.strokeStyle = '#333';
+            ctx.lineWidth = 2;
+            supports.forEach((support, index) => {
+                const x = padding + support.x * scaleX;
+                const yTop = canvas.height - padding - support.y * scaleY;
+                const yBottom = canvas.height - padding;
+                
+                ctx.beginPath();
+                ctx.moveTo(x, yTop);
+                ctx.lineTo(x, yBottom);
+                ctx.stroke();
+                
+                ctx.fillStyle = '#333';
+                ctx.beginPath();
+                ctx.arc(x, yTop, 3, 0, 2 * Math.PI);
+                ctx.fill();
+                
+                if (index % 3 === 0 || support.x === h) {
+                    ctx.fillStyle = '#666';
+                    ctx.font = '10px -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif';
+                    ctx.fillText(`${support.y.toFixed(1)}m`, x - 10, yTop - 8);
+                }
+            });
+            
+            // Peak point
+            const xCenter = padding + h * scaleX;
+            const yCenter = canvas.height - padding - k * scaleY;
+            ctx.fillStyle = '#000';
+            ctx.beginPath();
+            ctx.arc(xCenter, yCenter, 4, 0, 2 * Math.PI);
+            ctx.fill();
+            
+            ctx.fillStyle = '#333';
+            ctx.font = '12px -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif';
+            ctx.fillText(`Altura máxima: ${k}m`, xCenter + 10, yCenter - 10);
+            
+            // Dimension labels
+            ctx.fillStyle = '#666';
+            ctx.font = '11px -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif';
+            ctx.fillText(`${width}m`, canvas.width/2 - 10, canvas.height - 10);
+            ctx.fillText('0m', padding - 15, canvas.height - 30);
+            ctx.fillText(`${width}m`, canvas.width - padding - 5, canvas.height - 30);
+        }
+
+        window.onload = function() {
+            calculateProjectile();
+        };
+    </script>
+</body>
+</html>
